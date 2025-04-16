@@ -1,0 +1,237 @@
+Project UM
+
+Ella Hou (ehou02) and Darius-Stefan Iavorschi (diavor01)
+
+1) Everything has been implemented correctly.
+
+2) We would like to acknowledge the TAs for helping us during office hours.
+
+3) Departures from the initial design doc:
+
+- We are using UArrays for segment representation instead of Hanson 
+Sequences. They are a better alternative to sequences because:
+        i)      The size is known, so no resizing is required.
+        ii)     They are unboxed. Elements are stored on the stack instead of 
+                the heap, so no dereferencing is required, improving time and 
+                space complexity.
+        iii)    All elements are automatically initialized to 0.
+
+- Module 4 (exec.c) now contains the loop that executes all the instructions 
+in segment zero, which was originally in Module 1 (main.c). This results in:
+        i)  Cleaner code
+        ii) Better secret keeping - main is unaware of updates to segment zero
+
+4) Current architecture:
+        i) Module1 (main.c):   
+                - Handles input and control flow. 
+                - Orchestrates the overall program architecture. 
+                - Knows only about the inital set of instructions from the UM 
+                  file.
+        ii) Module2 (read.c, read.h):   
+                - Reads the input from the UM file and initializes 
+                  segment_zero. 
+                - Sends segment_zero back to Module 1.
+                - Knows only about segment_zero.
+        iii) Module3 (decode.c, decode.h, bitpack.h): 
+                - Decodes each instruction using bitbacking
+                - Sends the result to Module 4.
+                - Knows only about the current instruction.
+        iv) Module4 (exec.c, exec.h, opcode.h):   
+                - Executes all input instructions, called by Module 1. 
+                - Handles registers, segments and mapping functionalities. 
+                - Keeps secrets about the initial state of the program: 
+                  the program counter, the contents of the segments, 
+                  the segment ids, and the values in the registers.
+        v) Other files:
+                - tests.c, tests_main.c:  testing framework for out program
+                - help_test_funcs.c:      not part of the program logic, just 
+                                          displays our helper testing 
+                                          functions
+    
+- Data abstractions used:
+    1) recycled_ids: Sequence
+        -> rationale: 
+            - automatic scaling (unknown number of recycled ids)
+            - O(1) time complexity for insertion at the back of the sequence 
+            - O(1) time complexity for deletion at the begining of the sequence
+    2) all_segments: Sequence
+        -> rationale: 
+            - automatic scaling (unknown number of segments)
+            - the segments are stored on the heap
+    3) registers: an array
+        -> rationale:
+            - fixed size, no automatic scaling required
+            - no need to store data on the heap, reducing memory overhead
+            - insertion and access operations at any position in O(1) time 
+            complexity     
+    4) each segment: UArray
+        -> rationale:
+            - fixed size, no automatic scaling required
+            - they are unboxed, so they don't utilize excessive pointers, 
+            reducing memory overhead
+            - all elements are automatically initalized to 0
+
+5) Timing: 
+
+It takes our program around 4.26 seconds to execute 50 million instructions. 
+To calculate this, we temporarily altered our execute_instructions() function 
+to count the number of instructions executed, which was 85,070,522 for 
+midmark.um. Using /usr/bin/time, we measured midmark.um to take 7.25 seconds:
+        - (50,000,000 / 85,070,522) * 7.25 = 4.26. 
+
+6) UM Tests:
+
+-> helper testing functions used (see help_tests_funcs.c):
+        1) print_segments():     prints the content of all segments in binary 
+                                 format
+        2) print_binary():       prints the bits in a 32 bit unsigned integer
+        3) print_registers():    prints the values stored in all integers
+        4) print_recycled_ids(): prints all the recycled id values 
+
+-> test files:
+        1) halt.um
+        - tests that the halt instruction successfully cleans up memory and 
+        exits the program, tested using valgrind
+
+        2) out1.um
+        - tests that the output instruction successfully prints a standard 
+        readable character ('A'), loaded into a register using load value
+        - checked by diffing the result with the reference
+
+        3) out2.um
+        - tests that multiple characters are successfully printed to stdout
+        - this test also checks the functionality of execute_LV with 
+        non-standard characters and with overwriting data in the registers
+        - checked by diffing the result with the reference
+
+        4) input1.um
+        - this test inputs one character at time and immediately outputs
+        - checked by diffing the result with the reference
+
+        5) input2.um
+        - this test inputs multiple characters to different registers and 
+        outputs multiple of them at a time
+        - checked by diffing the result with the reference
+        - use print_registers() to make sure that EOF is stored correctly
+
+        6) cmov1.um
+        - tests that no register assignment is performed when the register at 
+        index C is 0. 
+        - The ouputted chars should correspond to values loaded 
+        in the appropriate registers at the begining of the test ("2F").
+        - checked by diffing the result with the reference
+
+        7) cmov2.um
+        - tests that register assigment is performed correctly when the 
+        register at index C is different from 0
+        - also tests overwriting the value in a register
+        - the final output should be "FF"
+        - checked by diffing the result with the reference
+
+        8) add1.um
+        - tests the functionality of execute_ADD(). The loaded value is 'C', 
+        while 'O' and 'L' are obtained through add operations. The final output
+        should be "COOL".
+        - checked by diffing the result with the reference
+
+        9) add2.um
+        - tests that a number can be added to itself. The answer is placed in 
+        the same register.
+        - checked by diffing the result with the reference
+
+        10) mul1.um
+        - tests the functionality of execute_MUL() by loading 2 values and 
+        multiplying them.
+        - checked by diffing the result with the reference
+
+        11) mul2.um
+        - tests the functionality of execute_MUL() when the result is above 
+        2^32, making sure the result is modded by 2^32
+        - checked by diffing the result with the reference
+
+        12) div1.um
+        - tests the functionality of execute_DIV(). The final answer should be 
+        rounded down.
+        - checked by diffing the result with the reference
+
+        13) div2.um
+        - tests the functionality of DIV and ADD instructions together. The 
+        final output should be "z=Z".
+        - checked by diffing the result with the reference
+
+        14) nand1.um
+        - tests that the nand instruction successfully takes the bitwise NAND 
+        of two values
+        - We reverse-engineered it so that the result is 123, which corresponds
+        to a printable value ('{'), which we output
+        - checked by diffing the result with the reference
+
+        15) activate1.um
+        - tests that the activate function successfully creates a new segment 
+        with all values initialized to zero and adds it to all_segments
+        - this is the basic case where there are no available recycled ids
+        - also tests that the id of the new segment is loaded into the correct 
+        register
+        - checked using our print_segments(), print_registers(), and 
+        print_recycled_ids() functions
+
+        16) inactivate1.um
+        - tests that inactivating a segment correctly frees the memory, adds 
+        the id to recycled_ids, and sets the the value at that index in 
+        all_segments to NULL
+        - Checked using our print_segments() and print_recycled_ids() 
+        functions, as well as valgrind
+
+        17) inactivate2.um
+        - tests that unmapping a segment allows the next map instruction to 
+        re-use the id.
+        - checked using our print_segments() and print_recycled_ids() 
+        functions after each map or unmap instruction, validating the values
+        - Also tests that the memory of the unmapped segment is cleaned up, 
+        using valgrind
+
+        18) sstore1.um
+        - tests that the segmented store instruction successfully stores a 
+        value from a register into a segment other than segment_zero at a 
+        given index
+        - we check the results using our print_segments() function
+
+        19) sstore2.um
+        - tests that the segmented store instruction successfully stores a 
+        value from a register into segment zero at a given index
+        - this is done by storing a halt instruction into the index of 
+        segment_zero right before an output instruction. Thus, 
+        nothing should be outputted.
+
+        20) sload1.um
+        - tests that the segmented load instruction successfully retrieves a 
+        value from a segment other than segment_zero and stores it in a 
+        register
+        - we check the results using our print_registers() function
+
+        21) sload2.um
+        - this test is more involved compared to sload1. 
+        - it loads and retrives a value from segment 2 at index 2.
+        - since the value stored in registers at index 0 is 0, the cmov 
+        instruction should not be executed. Otherwise, the final output would 
+        be altered.
+        - checked by diffing the result with the reference
+        
+        22) loadp1.um
+        - tests that the load program instruction correctly updates the pc 
+        to the given value when the given segment id is 0
+        - if successful, the pc should be updated to the index of the last 
+        instruction, which is halt, bypassing the output instruction
+
+        23) loadp2.um
+        - tests that a new segment is correctly loaded into segment zero, and 
+        that execution starts from the provided offset
+        - this works by mapping a new segment and loading a single halt 
+        instruction into index 3, then loading the segment into segment 
+        zero with pc = 3. If successful, the output instruction that 
+        was next in the original segment zero should be skipped.
+        
+All tests were valgrinded to check memory leaks.
+
+We spent approximately 5 hours analyzing the assigment, 15 hours preparing 
+the design, and 25 hours implemeting it. 
