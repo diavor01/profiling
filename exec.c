@@ -11,7 +11,7 @@
  #include "string.h"
  
  // /* An array hoding the registers */
- static uint32_t registers[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+ //static uint32_t registers[8] = {0, 0, 0, 0, 0, 0, 0, 0};
  
  // /* A sequence holding the recycled ids*/
  // static Seq_T recycled_ids;
@@ -490,17 +490,16 @@
   *              instruction) is not in the range 0 to 13
   *      May CRE indirectly through called functions
   * **************************/
- void execute_instructions(struct Segment segment_zero)
+ void execute_instructions(struct Segment *segment_zero)
  {
          int pc = 0;
  
-         //UArray_T segment_zero = Seq_get(all_segments, 0);
-         //long long length_seg_zero = UArray_length(segment_zero);
-         long long length_seg_zero = segment_zero.length;
+         long long length_seg_zero = segment_zero->length;
  
          Seq_T all_segments = Seq_new(10);
-         Seq_addhi(all_segments, &segment_zero);        
+         Seq_addhi(all_segments, segment_zero);        
          Seq_T recycled_ids = Seq_new(10);
+         uint32_t registers[8] = {0, 0, 0, 0, 0, 0, 0, 0};
         
          uint8_t A;
          uint8_t B;
@@ -508,28 +507,17 @@
          uint32_t val;
          int id;
  
-         struct Segment curr_segment;
-         //long long length_seg_zero = UArray_length(Seq_get(all_segments, 0));
+         struct Segment *curr_segment;
  
          /* continue executing until the end of segment_zero */
-         // Store the length somewhere after calling loadp
          while (pc < length_seg_zero) {
                  //fprintf(stderr, "pc is %d\n", pc);
-         //while (pc < UArray_length(Seq_get(all_segments, 0))) {
- 
-                 //UArray_T curr_segment;
- 
-                 /* get the current instruction and extract values */
-                 //UArray_T segment_zero = Seq_get(all_segments, 0);
-                 //uint32_t instruction = *(uint32_t*)UArray_at(segment_zero, pc);
-                 uint32_t instruction = segment_zero.arr[pc];
-                 //uint8_t opcode = (uint32_t)Bitpack_getu((uint64_t)instruction, 4, 28);
+         
+                 uint32_t instruction = segment_zero->arr[pc];
                  uint8_t opcode = (instruction & 4026531840) >> 28;
-                 //decode_instruction(instruction, &A, &B, &C, &opcode, &val);
  
                  /* update pc to point to the next instruction */
                  pc++;
- 
  
                  /* execute the corresponding instruction */
                  switch (opcode) {
@@ -537,7 +525,6 @@
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
-                                 // fprintf(stderr, "Inside CMOV\n");
   
                                  if (registers[C] != 0) {
                                          registers[A] = registers[B];
@@ -547,36 +534,24 @@
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
-                                 // fprintf(stderr, "Inside SLOAD\n");
-                                 //curr_segment = (UArray_T)Seq_get(all_segments, registers[B]);
-                                 curr_segment = *(struct Segment*)Seq_get(all_segments, registers[B]);
-                                 //registers[A] = *(uint32_t *)UArray_at(curr_segment, registers[C]);
-                                 registers[A] = curr_segment.arr[registers[C]];
+                                 
+                                 curr_segment = Seq_get(all_segments, registers[B]);
+                                 registers[A] = curr_segment->arr[registers[C]];
                                  break;
                          case SSTORE:
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
-                                 // fprintf(stderr, "Inside SSTORE\n");
-                                 curr_segment = *(struct Segment*)Seq_get(all_segments, registers[A]);
-                                 /* update the index in curr_segment to hold the new value */
-                                 //uint32_t *spot = (uint32_t *)UArray_at(curr_segment, registers[B]);
-                                 //*spot = registers[C];
-                                 fprintf(stderr, "pc is %d\n", pc);
-                                 fprintf(stderr, "length of curr segment is %llu\n", curr_segment.length);
-                                 fprintf(stderr, "registers[B] is %u\n", registers[B]);
-                                 curr_segment.arr[registers[B]] = registers[C];
+                                 
+                                 curr_segment = Seq_get(all_segments, registers[A]);
+                                 curr_segment->arr[registers[B]] = registers[C];
  
-                                 /* update segment zero */
-                                 if (registers[A] == 0) {
-                                         segment_zero = *(struct Segment*)Seq_get(all_segments, 0);
-                                 }
                                  break;
                          case ADD:
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
-                                 // fprintf(stderr, "Inside ADD\n");
+
                                  registers[A] = (registers[B] + registers[C]);
                                  break;
                          case MUL:
@@ -584,62 +559,64 @@
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
+
                                  registers[A] = (registers[B] * registers[C]);
                                  break;
                          case DIV:
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
+
                                  registers[A] = registers[B] / registers[C];
                                  break;
                          case NAND:
                                  A = (instruction & 448) >> 6;
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
+
                                  registers[A] = ~(registers[B] & registers[C]);
                                  break;
                          case HALT:
-                                 //fprintf(stderr, "inside halt\n");
                                  /* free each element in all_segments */
                                  for (int i = 0; i < Seq_length(all_segments); i++) {
-                                         //curr_segment = (UArray_T)Seq_get(all_segments, i);
-                                         curr_segment = *(struct Segment*)Seq_get(all_segments, i);
-                                         /* skip NULL elements (unmapped segments) */
-                                         // if (curr_segment != NULL) {
-                                         //         UArray_free(&curr_segment);
-                                         // }
-                                         free(curr_segment.arr);
+                                         curr_segment = Seq_get(all_segments, i);
+                                         free(curr_segment->arr);
+                                         free(curr_segment);                                         
                                  }
  
                                  Seq_free(&all_segments);
                                  Seq_free(&recycled_ids);
                                  exit(EXIT_SUCCESS);
- 
                                  break;
+
                          case ACTIVATE:
                                  B = (instruction & 56) >> 3;
                                  C = instruction & 7;
-                                 //UArray_T new_seg = UArray_new(registers[C], 4);
-                                 struct Segment new_seg;
-                                 new_seg.length = registers[C];
+
+                                 /* allocate space for new array */
                                  uint32_t *array = calloc(registers[C], sizeof(uint32_t));
-                                 new_seg.arr = array;
  
-                                 /* if there are unused ids from unmapped segments, re-use */
+                                 /* if there are unused ids from unmapped segments, re-use the struct */
                                  if (Seq_length(recycled_ids) != 0) {
                                          /* pop the id from recycled_ids */
                                          id = (uint32_t)(uintptr_t)Seq_remlo(recycled_ids);
-                                         /* put the new segment at index [id] of all_segments */
-                                         //Seq_put(all_segments, id, new_seg);
-                                         Seq_put(all_segments, id, &new_seg);
+                                         /* update the members of the struct, NOT the struct itself */
+                                         curr_segment = Seq_get(all_segments, id);
+                                         curr_segment->arr = array;
+                                         curr_segment->length = registers[C];
                                  } else {
-                                         /* if no unused ids, get next id and append */
+                                         /* if no unused ids, get next id and create a new struct to append */
                                          id = Seq_length(all_segments);
-                                         //Seq_addhi(all_segments, new_seg);
-                                         Seq_addhi(all_segments, &new_seg);
+
+                                         struct Segment *new_seg = calloc(1, sizeof(*new_seg));
+                                         new_seg->length = registers[C];
+                                         new_seg->arr = array;
+                                         Seq_addhi(all_segments, new_seg);
+
                                  }
                                  /* store id */
                                  registers[B] = id;
+                        
                                  break;
                          case INACTIVATE:
                                  C = instruction & 7;
@@ -650,13 +627,13 @@
                                  /* malloc id to add to recycled_ids (since sequences store pointers) */
                                  id = registers[C];
  
-                                 /* free the current segment at that index */
-                                 curr_segment = *(struct Segment*)Seq_get(all_segments, id);
-                                 //UArray_free(&curr_segment);
-                                 free(curr_segment.arr);
+                                 /* free the current segment's array and set to NULL (NOT the struct itself)*/
+                                 curr_segment = Seq_get(all_segments, id);
+
+                                 free(curr_segment->arr);
+                                 curr_segment->arr = NULL;
  
-                                 /* replace the segment with nullptr, add id to recycled_ids */
-                                 Seq_put(all_segments, id, (void*)NULL);
+                                 /* add id to recycled_ids */
                                  Seq_addhi(recycled_ids, (void *)(uintptr_t)id);
                                 
                                  break;
@@ -675,7 +652,7 @@
                                  }
  
                                  /* else, if within bounds, load the new character */
-                                 assert(c <= 255);
+                                 //assert(c <= 255);
                                  registers[C] = c;
                                  break;
                          case LOADP:
@@ -690,31 +667,26 @@
                                  }
  
                                  id = registers[B];
-                                 /* create a deep copy of the segment */
-                                 //UArray_T segment_to_copy = Seq_get(all_segments, id);
+
+                                 /* create deep copy of the segment's array (NOT the struct itself) */
                                  struct Segment *segment_to_copy = Seq_get(all_segments, id);
-                                 //int length = UArray_length(segment_to_copy);
-                                 struct Segment new_segment;
-                                 memcpy(&new_segment, segment_to_copy, sizeof(struct Segment));
+                                 uint32_t *new_arr = calloc(segment_to_copy->length, sizeof(uint32_t));
+                                 memcpy(new_arr, segment_to_copy->arr, segment_to_copy->length * sizeof(uint32_t));
+
+                                 /* update the members of the segment zero struct */
+                                 free(segment_zero->arr);
+                                 segment_zero->length = segment_to_copy->length;
+                                 segment_zero->arr = new_arr;
                                 
-                                 /* put the new segment into segment zero and free the old */
-                                 //UArray_T old = Seq_put(all_segments, 0, new_segment);
-                                 struct Segment *old = Seq_put(all_segments, 0, &new_segment);
-                                 //UArray_free(&old);  
-                                 free(old->arr);
-                                
-                                 /* update for loop */
-                                 segment_zero = *(struct Segment*)Seq_get(all_segments, 0);
-                                 //length_seg_zero = UArray_length(segment_zero);
-                                 length_seg_zero = segment_zero.length;
+                                 length_seg_zero = segment_zero->length;
                                  break;
                          case LV:
                                  val = (instruction & 33554431);
                                  A = ((instruction & 234881024) >> 25);
+
                                  registers[A] = val;
                                  break;
                          default:
-                                 // fprintf(stderr, "Got to the default case\n");
                                  exit(EXIT_FAILURE);
                  }
          }
@@ -724,16 +696,11 @@
           * This takes care of the case where the user does not halt, to
           * ensure no memory leaks
           */
-         // fprintf(stderr, "here");
          //execute_HALT();
          for (int i = 0; i < Seq_length(all_segments); i++) {
-                 //curr_segment = (UArray_T)Seq_get(all_segments, i);
-                 curr_segment = *(struct Segment*)Seq_get(all_segments, i);
-                 /* skip NULL elements (unmapped segments) */
-                 // if (curr_segment != NULL) {
-                 //         UArray_free(&curr_segment);
-                 // }
-                 free(curr_segment.arr);
+                 curr_segment = Seq_get(all_segments, i);
+                 free(curr_segment->arr);
+                 free(curr_segment);
          }
  
          Seq_free(&all_segments);

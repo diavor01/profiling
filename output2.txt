@@ -1,0 +1,1216 @@
+in SSTORE
+pc is 4243
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4246
+length of curr segment is 30110
+registers[B] is 4229
+id is 0
+
+in SSTORE
+pc is 4248
+length of curr segment is 30110
+registers[B] is 4230
+id is 0
+
+in SSTORE
+pc is 4250
+length of curr segment is 30110
+registers[B] is 4231
+id is 0
+
+in SSTORE
+pc is 4658
+length of curr segment is 30110
+registers[B] is 4229
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 1
+
+in SSTORE
+pc is 4667
+length of curr segment is 3
+registers[B] is 0
+id is 1
+
+in SSTORE
+pc is 4668
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4671
+length of curr segment is 3
+registers[B] is 2
+id is 1
+
+IN ACTIVATE
+created new segment of length 5 with id 2
+
+in SSTORE
+pc is 4676
+length of curr segment is 5
+registers[B] is 1
+id is 2
+
+in SSTORE
+pc is 4679
+length of curr segment is 5
+registers[B] is 0
+id is 2
+
+in SSTORE
+pc is 4680
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4681
+length of curr segment is 5
+registers[B] is 2
+id is 2
+
+in SSTORE
+pc is 4682
+length of curr segment is 5
+registers[B] is 3
+id is 2
+
+in SSTORE
+pc is 4684
+length of curr segment is 5
+registers[B] is 4
+id is 2
+
+IN ACTIVATE
+created new segment of length 3 with id 3
+
+in SSTORE
+pc is 4688
+length of curr segment is 3
+registers[B] is 0
+id is 3
+
+in SSTORE
+pc is 4689
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4691
+length of curr segment is 3
+registers[B] is 2
+id is 3
+
+IN ACTIVATE
+created new segment of length 5 with id 4
+
+in SSTORE
+pc is 4695
+length of curr segment is 5
+registers[B] is 1
+id is 4
+
+in SSTORE
+pc is 4698
+length of curr segment is 5
+registers[B] is 0
+id is 4
+
+in SSTORE
+pc is 4699
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4700
+length of curr segment is 5
+registers[B] is 2
+id is 4
+
+in SSTORE
+pc is 4702
+length of curr segment is 5
+registers[B] is 3
+id is 4
+
+in SSTORE
+pc is 4704
+length of curr segment is 5
+registers[B] is 4
+id is 4
+
+IN ACTIVATE
+created new segment of length 3 with id 5
+
+in SSTORE
+pc is 4708
+length of curr segment is 3
+registers[B] is 0
+id is 5
+
+in SSTORE
+pc is 4709
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4711
+length of curr segment is 3
+registers[B] is 2
+id is 5
+
+IN ACTIVATE
+created new segment of length 5 with id 6
+
+in SSTORE
+pc is 4715
+length of curr segment is 5
+registers[B] is 1
+id is 6
+
+in SSTORE
+pc is 4718
+length of curr segment is 5
+registers[B] is 0
+id is 6
+
+in SSTORE
+pc is 4719
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4721
+length of curr segment is 5
+registers[B] is 2
+id is 6
+
+in SSTORE
+pc is 4723
+length of curr segment is 5
+registers[B] is 3
+id is 6
+
+in SSTORE
+pc is 4725
+length of curr segment is 5
+registers[B] is 4
+id is 6
+
+IN ACTIVATE
+created new segment of length 4 with id 7
+
+in SSTORE
+pc is 4727
+length of curr segment is 4
+registers[B] is 1
+id is 7
+
+in SSTORE
+pc is 4730
+length of curr segment is 4
+registers[B] is 0
+id is 7
+
+in SSTORE
+pc is 4731
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4733
+length of curr segment is 4
+registers[B] is 2
+id is 7
+
+in SSTORE
+pc is 4735
+length of curr segment is 4
+registers[B] is 3
+id is 7
+
+IN ACTIVATE
+created new segment of length 3 with id 8
+
+in SSTORE
+pc is 4739
+length of curr segment is 3
+registers[B] is 0
+id is 8
+
+in SSTORE
+pc is 4740
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4743
+length of curr segment is 3
+registers[B] is 2
+id is 8
+
+IN ACTIVATE
+created new segment of length 5 with id 9
+
+in SSTORE
+pc is 4747
+length of curr segment is 30110
+registers[B] is 142
+id is 0
+
+in SSTORE
+pc is 4749
+length of curr segment is 5
+registers[B] is 1
+id is 9
+
+in SSTORE
+pc is 4752
+length of curr segment is 5
+registers[B] is 0
+id is 9
+
+in SSTORE
+pc is 4753
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4755
+length of curr segment is 5
+registers[B] is 2
+id is 9
+
+in SSTORE
+pc is 4757
+length of curr segment is 5
+registers[B] is 3
+id is 9
+
+in SSTORE
+pc is 4759
+length of curr segment is 5
+registers[B] is 4
+id is 9
+
+IN ACTIVATE
+created new segment of length 3 with id 10
+
+in SSTORE
+pc is 4764
+length of curr segment is 3
+registers[B] is 0
+id is 10
+
+in SSTORE
+pc is 4765
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4767
+length of curr segment is 3
+registers[B] is 2
+id is 10
+
+IN ACTIVATE
+created new segment of length 5 with id 11
+
+in SSTORE
+pc is 4772
+length of curr segment is 30110
+registers[B] is 144
+id is 0
+
+in SSTORE
+pc is 4774
+length of curr segment is 5
+registers[B] is 1
+id is 11
+
+in SSTORE
+pc is 4777
+length of curr segment is 5
+registers[B] is 0
+id is 11
+
+in SSTORE
+pc is 4778
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4780
+length of curr segment is 5
+registers[B] is 2
+id is 11
+
+in SSTORE
+pc is 4782
+length of curr segment is 5
+registers[B] is 3
+id is 11
+
+in SSTORE
+pc is 4784
+length of curr segment is 5
+registers[B] is 4
+id is 11
+
+in SSTORE
+pc is 4786
+length of curr segment is 30110
+registers[B] is 129
+id is 0
+
+in SSTORE
+pc is 4791
+length of curr segment is 30110
+registers[B] is 128
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 12
+
+in SSTORE
+pc is 4796
+length of curr segment is 3
+registers[B] is 0
+id is 12
+
+in SSTORE
+pc is 4797
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4799
+length of curr segment is 3
+registers[B] is 2
+id is 12
+
+in SSTORE
+pc is 4804
+length of curr segment is 30110
+registers[B] is 128
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 13
+
+in SSTORE
+pc is 4809
+length of curr segment is 30110
+registers[B] is 148
+id is 0
+
+in SSTORE
+pc is 4811
+length of curr segment is 3
+registers[B] is 0
+id is 13
+
+in SSTORE
+pc is 4812
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4814
+length of curr segment is 3
+registers[B] is 2
+id is 13
+
+IN ACTIVATE
+created new segment of length 5 with id 14
+
+in SSTORE
+pc is 4819
+length of curr segment is 5
+registers[B] is 1
+id is 14
+
+in SSTORE
+pc is 4822
+length of curr segment is 5
+registers[B] is 0
+id is 14
+
+in SSTORE
+pc is 4823
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4825
+length of curr segment is 5
+registers[B] is 2
+id is 14
+
+in SSTORE
+pc is 4827
+length of curr segment is 5
+registers[B] is 3
+id is 14
+
+in SSTORE
+pc is 4829
+length of curr segment is 5
+registers[B] is 4
+id is 14
+
+in SSTORE
+pc is 4834
+length of curr segment is 30110
+registers[B] is 128
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 15
+
+in SSTORE
+pc is 4839
+length of curr segment is 30110
+registers[B] is 150
+id is 0
+
+in SSTORE
+pc is 4841
+length of curr segment is 3
+registers[B] is 0
+id is 15
+
+in SSTORE
+pc is 4842
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4844
+length of curr segment is 3
+registers[B] is 2
+id is 15
+
+in SSTORE
+pc is 4849
+length of curr segment is 30110
+registers[B] is 128
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 16
+
+in SSTORE
+pc is 4854
+length of curr segment is 30110
+registers[B] is 151
+id is 0
+
+in SSTORE
+pc is 4856
+length of curr segment is 3
+registers[B] is 0
+id is 16
+
+in SSTORE
+pc is 4857
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4859
+length of curr segment is 3
+registers[B] is 2
+id is 16
+
+IN ACTIVATE
+created new segment of length 5 with id 17
+
+in SSTORE
+pc is 4864
+length of curr segment is 5
+registers[B] is 1
+id is 17
+
+in SSTORE
+pc is 4867
+length of curr segment is 5
+registers[B] is 0
+id is 17
+
+in SSTORE
+pc is 4868
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4870
+length of curr segment is 5
+registers[B] is 2
+id is 17
+
+in SSTORE
+pc is 4872
+length of curr segment is 5
+registers[B] is 3
+id is 17
+
+in SSTORE
+pc is 4874
+length of curr segment is 5
+registers[B] is 4
+id is 17
+
+in SSTORE
+pc is 4879
+length of curr segment is 30110
+registers[B] is 128
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 18
+
+in SSTORE
+pc is 4884
+length of curr segment is 30110
+registers[B] is 153
+id is 0
+
+in SSTORE
+pc is 4886
+length of curr segment is 3
+registers[B] is 0
+id is 18
+
+in SSTORE
+pc is 4887
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4889
+length of curr segment is 3
+registers[B] is 2
+id is 18
+
+in SSTORE
+pc is 4894
+length of curr segment is 30110
+registers[B] is 128
+id is 0
+
+IN ACTIVATE
+created new segment of length 3 with id 19
+
+in SSTORE
+pc is 4899
+length of curr segment is 30110
+registers[B] is 154
+id is 0
+
+in SSTORE
+pc is 4901
+length of curr segment is 3
+registers[B] is 0
+id is 19
+
+in SSTORE
+pc is 4902
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4904
+length of curr segment is 3
+registers[B] is 2
+id is 19
+
+IN ACTIVATE
+created new segment of length 5 with id 20
+
+in SSTORE
+pc is 4909
+length of curr segment is 5
+registers[B] is 1
+id is 20
+
+in SSTORE
+pc is 4912
+length of curr segment is 5
+registers[B] is 0
+id is 20
+
+in SSTORE
+pc is 4913
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4915
+length of curr segment is 5
+registers[B] is 2
+id is 20
+
+in SSTORE
+pc is 4917
+length of curr segment is 5
+registers[B] is 3
+id is 20
+
+in SSTORE
+pc is 4919
+length of curr segment is 5
+registers[B] is 4
+id is 20
+
+IN ACTIVATE
+created new segment of length 3 with id 21
+
+in SSTORE
+pc is 4925
+length of curr segment is 30110
+registers[B] is 156
+id is 0
+
+in SSTORE
+pc is 4927
+length of curr segment is 3
+registers[B] is 0
+id is 21
+
+in SSTORE
+pc is 4928
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4930
+length of curr segment is 3
+registers[B] is 2
+id is 21
+
+IN ACTIVATE
+created new segment of length 67 with id 22
+
+in SSTORE
+pc is 4938
+length of curr segment is 30110
+registers[B] is 157
+id is 0
+
+in SSTORE
+pc is 4940
+length of curr segment is 67
+registers[B] is 1
+id is 22
+
+in SSTORE
+pc is 4943
+length of curr segment is 67
+registers[B] is 0
+id is 22
+
+in SSTORE
+pc is 4944
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4947
+length of curr segment is 67
+registers[B] is 2
+id is 22
+
+in SSTORE
+pc is 4950
+length of curr segment is 30110
+registers[B] is 138
+id is 0
+
+in SSTORE
+pc is 4952
+length of curr segment is 30110
+registers[B] is 135
+id is 0
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 66
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 65
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 64
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 63
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 62
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 61
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 60
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 59
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 58
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 57
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 56
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 55
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 54
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 53
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 52
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 51
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 50
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 49
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 48
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 47
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 46
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 45
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 44
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 43
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 42
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 41
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 40
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 39
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 38
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 37
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 36
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 35
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 34
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 33
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 32
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 31
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 30
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 29
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 28
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 27
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 26
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 25
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 24
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 23
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 22
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 21
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 20
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 19
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 18
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 17
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 16
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 15
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 14
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 13
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 12
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 11
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 10
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 9
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 8
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 7
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 6
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 5
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 4
+id is 22
+
+in SSTORE
+pc is 4963
+length of curr segment is 67
+registers[B] is 3
+id is 22
+
+IN ACTIVATE
+created new segment of length 3 with id 23
+
+in SSTORE
+pc is 4970
+length of curr segment is 3
+registers[B] is 0
+id is 23
+
+in SSTORE
+pc is 4971
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4973
+length of curr segment is 3
+registers[B] is 2
+id is 23
+
+in SSTORE
+pc is 4975
+length of curr segment is 3
+registers[B] is 4
+id is 22
+
+IN ACTIVATE
+created new segment of length 3 with id 24
+
+in SSTORE
+pc is 4980
+length of curr segment is 3
+registers[B] is 0
+id is 24
+
+in SSTORE
+pc is 4981
+length of curr segment is 30110
+registers[B] is 4228
+id is 0
+
+in SSTORE
+pc is 4983
+length of curr segment is 3
+registers[B] is 2
+id is 24
+
+in SSTORE
+pc is 4985
+length of curr segment is 3
+registers[B] is 5
+id is 22
+
+IN ACTIVATE
+created new segment of length 3 with id 25
+
+in SSTORE
+pc is 4991
+length of curr segment is 30110
+registers[B] is 160
+id is 0
+
+in SSTORE
+pc is 4993
+length of curr segment is 3
+registers[B] is 0
+id is 25
+
+i

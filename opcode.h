@@ -33,4 +33,33 @@ struct Segment {
         uint32_t *arr;
 };
 
+struct Vector {
+        uint64_t length;
+        uint64_t capacity;
+        Segment *arr;
+}
+
+// to create new instance:
+struct Vector test;
+test->length = 0;
+test->capacity = 100;
+test->arr = calloc(test->capacity, sizeof(struct *Segment));
+
+uint64_t expand_capacity(Segment *arr) {
+        if (capacity <= length) {
+                capacity *= 2 + 1;
+                arr = realloc(arr, capacity * sizeof(struct *Segment));
+        }
+        return capacity;
+}
+
+void free(Segment *arr)
+{
+        free(arr);
+
+        curr_segment = arr[i];
+        free(curr_segment->arr);
+                 free(curr_segment);
+}
+
 #endif

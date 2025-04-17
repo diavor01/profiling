@@ -58,11 +58,11 @@ int main(int argc, char *argv[])
         //UArray_T segment_zero = store_instructions(fp, num_instructions);
         //UArray_T segment_zero = UArray_new(num_instructions, 4);
 
-        struct Segment segment_zero;
-        segment_zero.length = num_instructions;
+        struct Segment *segment_zero = calloc(1, sizeof(*segment_zero));
+        segment_zero->length = num_instructions;
 
         uint32_t *array = calloc(num_instructions, sizeof(uint32_t));
-        segment_zero.arr = array;
+        segment_zero->arr = array;
 
         int counter = 0;
 
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
                                         (buffer[3]);
                 /* insert new instruction into the segment */
                 //uint32_t *spot = (uint32_t*)UArray_at(segment_zero, counter);
-                segment_zero.arr[counter] = instruction;
+                segment_zero->arr[counter] = instruction;
                 //*spot = instruction_copy;
                 //*spot = instruction;
                 counter++;
